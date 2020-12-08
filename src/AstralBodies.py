@@ -1,7 +1,14 @@
-import pyglet as pg
 from stdprojectlib import *
 import sys
-import jstyleson as json
+from os import system as cmd
+try:
+	import pyglet as pg
+	import jstyleson as json
+except ModuleNotFoundError:
+	_ = cmd("pip install pyglet")
+	_ = cmd("pip install jstyleson")
+	import pyglet as pg
+	import jstyleson as json
 
 try:
 	config_file = open(sys.argv[1], 'r')

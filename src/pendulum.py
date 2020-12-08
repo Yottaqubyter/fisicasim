@@ -1,6 +1,12 @@
-import pyglet
 from math import cos, sin
 from time import sleep
+from os import system as cmd
+try:
+	import pyglet
+except ModuleNotFoundError:
+	_ = cmd("pip install pyglet")
+	import pyglet
+
 win = pyglet.window.Window(fullscreen=False,resizable=True,caption='Pendulo')
 
 global alpha, valpha, g, counter

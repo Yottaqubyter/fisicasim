@@ -20,6 +20,7 @@ set /p input=Numero:
 if %input%==1 (
 	echo Usa las teclas A y D para empujar hacia la agujas del reloj y contrario a estas, respectivamente
 	pause
+	python ".\src\pendulum.py"
 	.\bin\pendulum.exe
 	goto inicio
 )
@@ -28,6 +29,7 @@ if %input%==2 (
 	echo Pulsa escape para salir
 	echo Puedes editar el archivo AstralBodies.json en config para colocar tus propios cuerpos en la simulacion
 	pause
+	python ".\src\AstralBodies.py" ".\config\AstralBodies.json"
 	.\bin\AstralBodies.exe .\config\AstralBodies.json
 	goto inicio
 )
