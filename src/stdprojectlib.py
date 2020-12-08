@@ -71,11 +71,11 @@ class vector:
     def __rtruediv__(other,self):
         return self*(1/other)
     
-    def __rfloordiv__(other,s):
+    def __rfloordiv__(other,self):
         if type(other)==vector:
             return NotImplemented
         else:
-            return vector(s.x//other,s.y//other)
+            return vector(self.x//other,self.y//other)
 
 
     def __neg__(self):
