@@ -1,0 +1,51 @@
+[
+/*
+Configuracion:
+Aquí se escribirá cada uno de los cuerpos celestes, como un diccionario {···}, con propiedades:
+	· "posicion": [r0_x,r0_y] en las unidades del programa (equivalen a 3 pixeles)
+	· "velocidad": [v0_x,v0_y] en las unidades del programa
+	· "masa": Unidad arbitraria (no es kilos, ni gramos, ni nada)
+	· "radio": en píxeles. Puramente estético (Mejor que sea mayor de 4)
+*/
+/*
+Ejemplo:
+{
+	"posicion":[0,0],
+	"velocidad":[0,0],
+	"masa":1,
+	"radio":4,
+},
+*/
+
+
+{
+	"posicion":[0,0],
+	"velocidad":[0,0],
+	"masa":10000000,
+	"radio":30,
+},
+{
+	"posicion":[0,100],
+	"velocidad":[30,0],
+	"masa":10000,
+	"radio":10,
+},
+{
+	"posicion":[0,95],
+	"velocidad":[35,0],
+	"masa":1,
+	"radio":5,
+},
+{
+	"posicion":[0,200],
+	"velocidad":[20,0],
+	"masa":10000,
+	"radio":10,
+},
+{
+	"posicion":[0,195],
+	"velocidad":[25,0],
+	"masa":1,
+	"radio":5,
+},
+]

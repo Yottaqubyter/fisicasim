@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"backup",
+				"__pycache__"
+			],
+			"name": "Source",
+			"path": "src"
+		},
+		{
+			"name": "Config",
+			"path": "config"
+		},
+		{
+			"binary_file_patterns":
+			[
+				"*.*"
+			],
+			"name": "Binaries",
+			"path": "bin"
+		}
+	]
+}
