@@ -19,7 +19,7 @@ else:
 	config = json.load(config_file)
 	config_file.close()
 	win = pg.window.Window(fullscreen=True,caption='Gravitacion')
-	wdata = vector(win.width, win.height)
+	wdata = vector(win.width/2, win.height/2)
 	d_wdata = +null_vector
 	# coord = [
 	# vector(-20,0),
@@ -45,30 +45,37 @@ else:
 	# ]
 
 	astralSpace = []
+	# tempSpace = []
+	pygletSpace = []
+	for c in config:
+		pygletSpace += [pg.shapes.Circle(0,0,c["radio"])]
+		astralSpace += [astralBody(c["masa"], astralSpace, vector(*c["posicion"]), vector(*c["velocidad"]))]
+	# tempSpace = [
+	# 	astralBody(
+	# 		pg.shapes.Circle(0,0,c["radio"]),
+	# 		wdata,
+	# 		c["masa"],
+	# 		astralSpace,
+	# 		vector(c["posicion"][0],c["posicion"][1]),
+	# 		vector(c["velocidad"][0],c["velocidad"][1]))
+	# 		 for c in config]
 
-	tempSpace = [
-		astralBody(
-			pg.shapes.Circle(0,0,c["radio"]),
-			wdata,
-			c["masa"],
-			astralSpace,
-			vector(c["posicion"][0],c["posicion"][1]),
-			vector(c["velocidad"][0],c["velocidad"][1]))
-			 for c in config]
-
-	astralSpace += tempSpace
-	del tempSpace
+	# astralSpace += tempSpace
+	# del tempSpace
 
 	counter = 0
 
 	def update(dt):
-		global astralSpace, counter, wdata, d_wdata
+		global astralSpace, counter, wdata, d_wdata, pygletSpace
 		if counter<=2:
 			counter+=1
-			return 0
+			return None
 		for b in astralSpace:
 			b.update(dt)
 		wdata += d_wdata
+		for pygletBody, astralBody in zip(pygletSpace,astralSpace):
+			pygletBody.x = astralBody.get_dnr_dtn(0).x*3 + wdata.x
+			pygletBody.y = astralBody.get_dnr_dtn(0).y*3 + wdata.y
 
 	pg.clock.schedule_interval(update,1/60)
 
@@ -92,6 +99,6 @@ else:
 	@win.event
 	def on_draw():
 		win.clear()
-		for bd in astralSpace:
-			bd.pgbody.draw()
+		for pygletBody in pygletSpace:
+			pygletBody.draw()
 	pg.app.run()

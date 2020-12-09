@@ -160,22 +160,14 @@ j_vector = vector(0,1)
 
 
 class body:
-# Por hacer: Modificar la clase para que solo se encargue de calculos matematicos (La parte de piglet la hago yo)
-#            (Así no hay que modificar tantas cosas para crear AstralBodies3D)
-    def __init__(self, pgbody, wdata, r0, *args):
+    def __init__(self, r0, *args):
         if not istype((r0,)+args , vector):
             raise TypeError("Expected vector type arguments: body(pyglet shape, vector, ...)")
         self.rva0 = [r0]+list(args) # [r, dr/dt, d**2r/dt**2, d**3r/dt**3]
-        self.wdata = wdata
-        pgbody.x = r0.x*3 + wdata.x/2
-        pgbody.y = r0.y*3 + wdata.y/2
-        self.pgbody = pgbody
     
     def update(self,dt):
         for i in range(self.get_n()-1):
             self.rva0[i] += self.get_dnr_dtn(i+1)*dt
-        self.pgbody.x = self.rva0[0].x*3 + self.wdata.x/2
-        self.pgbody.y = self.rva0[0].y*3 + self.wdata.y/2
 
     def get_n(self):
         return len(self.rva0)
@@ -186,8 +178,8 @@ class body:
 
 class astralBody(body):
 
-    def __init__(self, pgbody, wdata, mass, bodySpace, r0=null_vector, v0=null_vector):
-        super(astralBody, self).__init__(pgbody, wdata, r0, v0)
+    def __init__(self, mass, bodySpace, r0=null_vector, v0=null_vector):
+        super(astralBody, self).__init__(r0, v0)
         self.mass = mass
         if not istype(bodySpace, astralBody):
             raise TypeError("Expected (astralBody,···,astralBody,) type argument")
