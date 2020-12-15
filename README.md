@@ -24,7 +24,7 @@ Puedes moverte por el sistema usando las teclas de dirección
 
 ### Sintaxis del archivo de configuracion
 
-```json
+```javascript
 [
     /*
     Se pueden usar comentarios así
