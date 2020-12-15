@@ -163,17 +163,17 @@ class body:
     def __init__(self, r0, *args):
         if not istype((r0,)+args , vector):
             raise TypeError("Expected vector type arguments: body(pyglet shape, vector, ...)")
-        self.rva0 = [r0]+list(args) # [r, dr/dt, d**2r/dt**2, d**3r/dt**3]
+        self.dnr_dtn = [r0]+list(args) # [r, dr/dt, d**2r/dt**2, d**3r/dt**3]
     
     def update(self,dt):
         for i in range(self.get_n()-1):
-            self.rva0[i] += self.get_dnr_dtn(i+1)*dt
+            self.dnr_dtn[i] += self.get_dnr_dtn(i+1)*dt
 
     def get_n(self):
-        return len(self.rva0)
+        return len(self.dnr_dtn)
 
     def get_dnr_dtn(self,n):
-        return self.rva0[n]
+        return self.dnr_dtn[n]
 
 
 class astralBody(body):
@@ -197,11 +197,17 @@ class astralBody(body):
         except IndexError as e:
             if n>3:
                 raise e
-            return opsum([
-                (atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))*atractor.mass*0.01
+            return opsum([ 
+                (atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))*atractor.mass*0.8649504 # ~CTE
                 /
                 abs(atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))**3 
                 for atractor in filter(lambda x:x!=self and x!=None, self.bodySpace)])
+                # CTE = G*(10^12*3600^2)/(1000^3) 
+                # Esta constante esta hecha para que las unidades validas para
+                # la simulacion sean:
+                # Masa: GT->1GT==10^12kg
+                # Tiempo: horas
+                # Distancia: km
 
 if __name__=='__main__':
     print(2*i_vector)
