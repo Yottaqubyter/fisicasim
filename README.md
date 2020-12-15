@@ -18,17 +18,9 @@ La velocidad y posiciones en el siguiente instante se calculan de esta manera:
 
 Donde:
 
-- <img src="https://render.githubusercontent.com/render/math?math=r_f"> y 
-<img src="https://render.githubusercontent.com/render/math?math=v_f">
-es la posicion y velocidad en el instante simulado actual, mientras que 
-<img src="https://render.githubusercontent.com/render/math?math=r_0">
-y
-<img src="https://render.githubusercontent.com/render/math?math=v_0">
-son sus respectivos en el previo instante simulado.
+- <img src="https://render.githubusercontent.com/render/math?math=r_f"> y <img src="https://render.githubusercontent.com/render/math?math=v_f"> es la posicion y velocidad en el instante simulado actual, mientras que <img src="https://render.githubusercontent.com/render/math?math=r_0"> y <img src="https://render.githubusercontent.com/render/math?math=v_0"> son sus respectivos en el previo instante simulado.
 
-- <img src="https://render.githubusercontent.com/render/math?math=dt"> es el tiempo transcurrido entre iteraciones de la simulacion (Entorno a 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{1}{60}"> 
-segundos)
+- <img src="https://render.githubusercontent.com/render/math?math=dt"> es el tiempo transcurrido entre iteraciones de la simulacion (Entorno a 0.0167 segundos)
 
 <br>
 
