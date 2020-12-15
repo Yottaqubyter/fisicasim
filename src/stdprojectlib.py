@@ -34,7 +34,7 @@ class vector:
         return vector(self.x-other.x,self.y-other.y,self.z-other.z)
     def __mul__(self, other):
         if type(other)==vector:
-            return NotImplemented # Se podria implementar producto escalar
+            return self.x*other.x + self.y*other.y + self.z*other.z # Se podria implementar producto escalar
         else:
             return vector(self.x*other,self.y*other,self.z*other)
     def __matmul__(self, other):
@@ -69,7 +69,7 @@ class vector:
         return vector(other.x-self.x,other.y-self.y,other.z-self.z)
     def __rmul__(self, other): # other*self
         if type(other)==vector:
-            return NotImplemented # Se puede añadir producto escalar
+            return self.x*other.x + self.y*other.y + self.z*other.z # Se puede añadir producto escalar
         else:
             return vector(self.x*other,self.y*other,self.z*other)
     def __rmatmul__(self, other):
@@ -107,7 +107,7 @@ class vector:
         return self
     def __imul__(self, other):
         if type(other)==vector:
-            return NotImplemented
+            return NotImplemented # No añadir el producto escalar aquí, porque crearía confusion por el cambio de tipos
         else:
             self.x *= other
             self.y *= other
