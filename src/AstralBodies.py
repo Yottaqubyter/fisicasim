@@ -48,7 +48,7 @@ else:
 	# tempSpace = []
 	pygletSpace = []
 	for c in config:
-		pygletSpace += [pg.shapes.Circle(0,0,c["radio"])]
+		pygletSpace += [pg.shapes.Circle(0,0,c["radio"]*3)]
 		astralSpace += [astralBody(c["masa"], astralSpace, vector(*c["posicion"]), vector(*c["velocidad"]))]
 	# tempSpace = [
 	# 	astralBody(
@@ -86,7 +86,7 @@ else:
 		d_wdata.y = 0
 
 	@win.event
-	def on_key_press(symbol, modifiers):
+	def on_key_press(symbol, modifiers): # Añadir soporte para salir de pantalla completa (Y para zoom)
 		if pg.window.key.UP==symbol:
 			d_wdata.y = -10
 		if pg.window.key.DOWN==symbol:
