@@ -61,6 +61,7 @@ Puedes moverte por el sistema usando las teclas de dirección
         "velocidad":[5,0],
         // Las unidades de velocidad son km/hora
         "radio":4
+        // El radio es algo puramente estético
     },
     {···},
     {···}
