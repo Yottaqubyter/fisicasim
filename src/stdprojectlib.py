@@ -197,8 +197,8 @@ class astralBody(body):
         except IndexError as e:
             if n>3:
                 raise e
-            return opsum([ 
-                (atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))*atractor.mass*0.8649504 # ~CTE
+            return 0.8649504*opsum([ # 0.8649504 ~= CTE 
+                (atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))*atractor.mass # ~CTE
                 /
                 abs(atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))**3 
                 for atractor in filter(lambda x:x!=self and x!=None, self.bodySpace)])
