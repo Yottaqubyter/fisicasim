@@ -34,7 +34,7 @@ class vector:
         return vector(self.x-other.x,self.y-other.y,self.z-other.z)
     def __mul__(self, other):
         if type(other)==vector:
-            return self.x*other.x + self.y*other.y + self.z*other.z # Se podria implementar producto escalar
+            return self.x*other.x + self.y*other.y + self.z*other.z # Producto escalar
         else:
             return vector(self.x*other,self.y*other,self.z*other)
     def __matmul__(self, other):
@@ -69,7 +69,7 @@ class vector:
         return vector(other.x-self.x,other.y-self.y,other.z-self.z)
     def __rmul__(self, other): # other*self
         if type(other)==vector:
-            return self.x*other.x + self.y*other.y + self.z*other.z # Se puede añadir producto escalar
+            return self.x*other.x + self.y*other.y + self.z*other.z # Producto escalar
         else:
             return vector(self.x*other,self.y*other,self.z*other)
     def __rmatmul__(self, other):
@@ -176,6 +176,8 @@ class body:
         return self.dnr_dtn[n]
 
 
+global G
+G = 0.8649504
 class astralBody(body):
 
     def __init__(self, mass, bodySpace, r0=null_vector, v0=null_vector):
@@ -192,12 +194,13 @@ class astralBody(body):
         return 3
 
     def get_dnr_dtn(self,n):
+        global G
         try:
             return super(astralBody,self).get_dnr_dtn(n)
         except IndexError as e:
             if n>3:
                 raise e
-            return 0.8649504*opsum([ # 0.8649504 ~= CTE 
+            return G*opsum([ # 0.8649504 ~= CTE 
                 (atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))*atractor.mass # ~CTE
                 /
                 abs(atractor.get_dnr_dtn(0)-self.get_dnr_dtn(0))**3 

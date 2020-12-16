@@ -16,52 +16,20 @@ except IndexError as err:
 	print("Uso: astralBodies.exe config_file.json\n")
 	# config = open(input("Introduce la dirección del archivo de configuración: "),'r')
 else:
-	config = json.load(config_file)
+	data = json.load(config_file)
 	config_file.close()
 	win = pg.window.Window(fullscreen=True,caption='Gravitacion')
 	wdata = vector(win.width/2, win.height/2)
 	d_wdata = +null_vector
-	# coord = [
-	# vector(-20,0),
-	# vector(0,195),
-	# vector(0,200),
-	# vector(20,0),
-	# vector(30,0),
-	# ]
-	# vel = [
-	# vector(0,-20),
-	# vector(25,0),
-	# vector(20,0),
-	# vector(0,20),
-	# vector(0,80),
-	# ]
-	# mass=(4000000,1,10000,4000000,1)
-	# pgSpace = [
-	# pg.shapes.Circle(0,0,20),
-	# pg.shapes.Circle(0,0,4),
-	# pg.shapes.Circle(0,0,7),
-	# pg.shapes.Circle(0,0,20),
-	# pg.shapes.Circle(0,0,4),
-	# ]
+	config = data["grupo"]
+	try:
+		G = data["G"]
 
 	astralSpace = []
-	# tempSpace = []
 	pygletSpace = []
 	for c in config:
 		pygletSpace += [pg.shapes.Circle(0,0,c["radio"]*3)]
 		astralSpace += [astralBody(c["masa"], astralSpace, vector(*c["posicion"]), vector(*c["velocidad"]))]
-	# tempSpace = [
-	# 	astralBody(
-	# 		pg.shapes.Circle(0,0,c["radio"]),
-	# 		wdata,
-	# 		c["masa"],
-	# 		astralSpace,
-	# 		vector(c["posicion"][0],c["posicion"][1]),
-	# 		vector(c["velocidad"][0],c["velocidad"][1]))
-	# 		 for c in config]
-
-	# astralSpace += tempSpace
-	# del tempSpace
 
 	counter = 0
 

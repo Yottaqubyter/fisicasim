@@ -48,28 +48,35 @@ Puedes moverte por el sistema usando las teclas de dirección
 Esta informacion se escribe en el archivo AstralBodies.json, en config.
 
 **Las unidades incluidas aquí no estan implementadas en los binarios. Si quieres usar unidades reales, puedes usar las unidades del sistema internacional, pero para la masa tener en cuenta que 1 unidad de masa = 10^9/6.674 kg (Estara solucionado en la proxima actualización)**
+
+**Ademas, la lista que hay en "grupo", es la que se usa como archivo de configuracion en los binarios actuales**
 ```javascript
-[
     /*
     Se pueden usar comentarios así
     */
 
+
     // O así
 
-    {
-        "masa":1000, 
-        // Las unidades de masa equivalen a 10^12 kg
-        "posicion":[1,4],
-        // Las unidades de distancia son km
-        "velocidad":[5,0],
-        // Las unidades de velocidad son km/hora
-        "radio":4
-        // El radio es algo puramente estético
-    },
-    {···},
-    {···}
-] 
+{
+    "G":0.8649504 // Parametro opcional, para modificar la constante gravitacional. Por defecto 0.8649504 (En km^3/(Gt*h^2) )
+    "grupo":[
+        {
+            "masa":1000, 
+            // Las unidades de masa equivalen a 10^12 kg
+            "posicion":[1,4],
+            // Las unidades de distancia son km
+            "velocidad":[5,0],
+            // Las unidades de velocidad son km/hora
+            "radio":4
+            // El radio es algo puramente estético
+        },
+        {···},
+        {···}]
+} 
 ```
+
+Las unidades que se muestran son las que se usan con la constante gravitacional que ya hay por defecto.
 
 ### Fórmulas
 
