@@ -45,6 +45,9 @@ Puedes moverte por el sistema usando las teclas de dirección
 
 ### Sintaxis del archivo de configuracion
 
+Esta informacion se escribe en el archivo AstralBodies.json, en config.
+
+**Las unidades incluidas aquí no estan implementadas en los binarios. Si quieres usar unidades reales, puedes usar las unidades del sistema internacional, pero para la masa tener en cuenta que 1 unidad de masa = 10^9/6.674 kg (Estara solucionado en la proxima actualización)**
 ```javascript
 [
     /*
@@ -79,4 +82,4 @@ Donde:
 - <img src="https://render.githubusercontent.com/render/math?math=n"> es el número de cuerpos en el espacio sin contar el propio
 - <img src="https://render.githubusercontent.com/render/math?math=A"> es la posición del cuerpo propio y <img src="https://render.githubusercontent.com/render/math?math=P_k"> es la del otro cuerpo
 -  <img src="https://render.githubusercontent.com/render/math?math=m_k"> es la masa del otro cuerpo
-- <img src="https://render.githubusercontent.com/render/math?math=G'\, \frac{km^3}{Gt\,h^2}=G \, \frac{m^3}{kg\,s^2} \, \frac{10^12 \cdot 3600^2}{1000^3}"> es una simple conversion de unidades. No he usado la constante real porque era muy pequeña, y no creia que el ordenador pudiera manejar algo así (De todas formas, los cuerpos gravitatorios tienen mucha masa y se encuentran a mucha distancia entre sí, así que tampoco era muy necesario usar la constante real)
+- <img src="https://render.githubusercontent.com/render/math?math=G'\, \frac{km^3}{Gt\,h^2}=G \, \frac{m^3}{kg\,s^2} \, \frac{10^12 \cdot 3600^2}{1000^3}"> es una simple conversion de unidades. No he usado la constante real porque era muy pequeña, y no creia que el ordenador pudiera manejar algo así (De todas formas, los cuerpos gravitatorios tienen mucha masa y se encuentran a mucha distancia entre sí, así que tampoco era muy necesario usar la constante real). Planeo incluir la posibilidad de cambiar la constante en el archivo de configuración en la proxima actualización.
